@@ -45,8 +45,8 @@
   background-color: #860808;
 }
 
-.keyboard__key:hover {
-  background-color: #860808d8;
+.keyboard__key:not(.active):hover {
+  background-color: #860808a2;
 }
 
 .Tab {

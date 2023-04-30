@@ -42,9 +42,20 @@ function generateKeyboard() {
 }
 
 document.onkeydown = function (event) {
-  document.querySelector(`.${event.code}`).classList.add('active');
+  document.querySelector(`.${event.code}`)?.classList.add('active');
 }
 
 document.onkeyup = function (event) {
-  document.querySelector(`.${event.code}`).classList.remove('active');
+  document.querySelector(`.${event.code}`)?.classList.remove('active');
+}
+
+document.onmousedown = function (event) {
+  if (event.target.parentElement === document.querySelector('.keyboard')) {
+    let target = event.target;
+    target.classList.add('active');
+    
+    document.onmouseup = function () {
+      target.classList.remove('active');
+    }
+  }
 }
