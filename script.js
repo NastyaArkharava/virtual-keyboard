@@ -62,9 +62,13 @@ function generateKeyboard(language) {
 }
 
 document.onkeydown = function (event) {
+  document.querySelector('.textarea').focus();
   document.querySelector(`.${event.code}`)?.classList.add('active');
   if (event.shiftKey && event.altKey) {
     changeLanguage();
+  }
+  if (event.key === 'Tab') {
+    event.preventDefault();
   }
 }
 
@@ -76,6 +80,10 @@ document.onmousedown = function (event) {
   if (event.target.parentElement === document.querySelector('.keyboard')) {
     let target = event.target;
     target.classList.add('active');
+
+    if (!target.classList.contains('Backspace') && !target.classList.contains('Tab') && !target.classList.contains('Delete') && !target.classList.contains('CapsLock') && !target.classList.contains('Enter') && !target.classList.contains('ShiftLeft') && !target.classList.contains('ShiftRight') && !target.classList.contains('ControlLeft') && !target.classList.contains('MetaLeft') && !target.classList.contains('AltLeft') && !target.classList.contains('AltRight') && !target.classList.contains('ControlRight')) {
+      document.querySelector('.textarea').value += target.innerHTML;
+    }
 
     document.onmouseup = function () {
       target.classList.remove('active');
