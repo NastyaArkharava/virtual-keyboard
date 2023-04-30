@@ -37,8 +37,12 @@
   text-align: center;
   border-radius: 10px;
   cursor: pointer;
-  transition: all 0.5s;
+  transition: all 0.2s;
   user-select: none;
+}
+
+.keyboard__key.active {
+  background-color: #860808;
 }
 
 .keyboard__key:hover {

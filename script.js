@@ -40,3 +40,11 @@ function generateKeyboard() {
   }
   return keyboard;
 }
+
+document.onkeydown = function (event) {
+  document.querySelector(`.${event.code}`).classList.add('active');
+}
+
+document.onkeyup = function (event) {
+  document.querySelector(`.${event.code}`).classList.remove('active');
+}
