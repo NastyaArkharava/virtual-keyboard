@@ -100,7 +100,43 @@ function changeLanguage() {
 }
 
 document.onkeydown = (event) => {
+  event.preventDefault();
   document.querySelector('.textarea').focus();
+  if (event.code !== 'Backspace' && event.code !== 'Tab' && event.code !== 'Delete' && event.code !== 'CapsLock' && event.code !== 'Enter' && event.code !== 'ShiftLeft' && event.code !== 'ShiftRight' && event.code !== 'ControlLeft' && event.code !== 'MetaLeft' && event.code !== 'AltLeft' && event.code !== 'AltRight' && event.code !== 'ControlRight') {
+    if (event.code !== 'ArrowUp' && event.code !== 'ArrowLeft' && event.code !== 'ArrowDown' && event.code !== 'ArrowRight') {
+      document.querySelector('.textarea').value += `${event.key}`;
+    } else {
+      switch (event.code) {
+        case 'ArrowUp':
+          document.querySelector('.textarea').value += '↑';
+          break;
+        case 'ArrowDown':
+          document.querySelector('.textarea').value += '↓';
+          break;
+        case 'ArrowLeft':
+          document.querySelector('.textarea').value += '←';
+          break;
+        case 'ArrowRight':
+          document.querySelector('.textarea').value += '→';
+          break;
+        default:
+          break;
+      }
+    }
+  }
+
+  if (event.code === 'Enter') {
+    document.querySelector('.textarea').value += '\n';
+  }
+
+  if (event.code === 'Tab') {
+    document.querySelector('.textarea').value += '\t';
+  }
+
+  if (event.code === 'Backspace') {
+    document.querySelector('.textarea').value = document.querySelector('.textarea').value.slice(0, document.querySelector('.textarea').value.length - 1);
+  }
+
   document.querySelector(`.${event.code}`)?.classList.add('active');
   if (event.shiftKey && event.altKey) {
     changeLanguage();
