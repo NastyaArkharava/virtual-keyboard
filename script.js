@@ -102,25 +102,27 @@ function changeLanguage() {
 document.onkeydown = (event) => {
   event.preventDefault();
   document.querySelector('.textarea').focus();
-  if (event.code !== 'Backspace' && event.code !== 'Tab' && event.code !== 'Delete' && event.code !== 'CapsLock' && event.code !== 'Enter' && event.code !== 'ShiftLeft' && event.code !== 'ShiftRight' && event.code !== 'ControlLeft' && event.code !== 'MetaLeft' && event.code !== 'AltLeft' && event.code !== 'AltRight' && event.code !== 'ControlRight') {
-    if (event.code !== 'ArrowUp' && event.code !== 'ArrowLeft' && event.code !== 'ArrowDown' && event.code !== 'ArrowRight') {
-      document.querySelector('.textarea').value += `${event.key}`;
-    } else {
-      switch (event.code) {
-        case 'ArrowUp':
-          document.querySelector('.textarea').value += '↑';
-          break;
-        case 'ArrowDown':
-          document.querySelector('.textarea').value += '↓';
-          break;
-        case 'ArrowLeft':
-          document.querySelector('.textarea').value += '←';
-          break;
-        case 'ArrowRight':
-          document.querySelector('.textarea').value += '→';
-          break;
-        default:
-          break;
+  if (keyboardCode.includes(event.code)) {
+    if (event.code !== 'Backspace' && event.code !== 'Tab' && event.code !== 'Delete' && event.code !== 'CapsLock' && event.code !== 'Enter' && event.code !== 'ShiftLeft' && event.code !== 'ShiftRight' && event.code !== 'ControlLeft' && event.code !== 'MetaLeft' && event.code !== 'AltLeft' && event.code !== 'AltRight' && event.code !== 'ControlRight') {
+      if (event.code !== 'ArrowUp' && event.code !== 'ArrowLeft' && event.code !== 'ArrowDown' && event.code !== 'ArrowRight') {
+        document.querySelector('.textarea').value += `${event.key}`;
+      } else {
+        switch (event.code) {
+          case 'ArrowUp':
+            document.querySelector('.textarea').value += '↑';
+            break;
+          case 'ArrowDown':
+            document.querySelector('.textarea').value += '↓';
+            break;
+          case 'ArrowLeft':
+            document.querySelector('.textarea').value += '←';
+            break;
+          case 'ArrowRight':
+            document.querySelector('.textarea').value += '→';
+            break;
+          default:
+            break;
+        }
       }
     }
   }
