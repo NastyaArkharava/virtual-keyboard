@@ -187,7 +187,7 @@ document.onmousedown = (event) => {
       if (event.code !== 'CapsLock') {
         e.classList.remove('active');
       }
-      if (event.code === 'ShiftLeft' || event.code === 'ShiftRight') {
+      if (event.target.classList.contains('ShiftLeft') || event.target.classList.contains('ShiftRight')) {
         shift = false;
         document.querySelector('.keyboard').innerHTML = generateKeyboard(language);
       }
